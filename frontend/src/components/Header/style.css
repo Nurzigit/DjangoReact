@@ -1,0 +1,61 @@
+:root {
+    --font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 25px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.header_logo > a {
+    text-decoration: none;
+    color: black;
+}
+.header_logo > a {
+    text-decoration: none;
+    color: black;
+}
+
+.header_links {
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+.header_links > a {
+    text-decoration: none;
+    color: black;
+}
+.header_links > a:hover {
+    transition: color 1s;
+    text-decoration: none;
+    color: grey;
+}
+
+.header_btn {
+    position: relative;
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 866px) {
+    .header {
+        flex-direction: column;
+    }
+}
+
+
+

@@ -13,7 +13,7 @@ export const useLocalHook = () => {
     const getAllItems = () => {
         axios
             .get(
-                'http://localhost:8000/products/'
+                'http://localhost:8000/api/products/'
             )
             .then((res) => {
                 setItems(res.data);

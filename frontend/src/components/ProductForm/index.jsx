@@ -8,7 +8,7 @@ export const ProductForm = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      axios.post('http://localhost:8000/products/', { name, price })
+      axios.post('http://localhost:8000/api/products/', { name, price })
         .then(response => console.log(response.data));
       setName('');
       setPrice('');

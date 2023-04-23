@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useLocalHook } from '../../hooks/useLocalHook';
 
 export const ProductList = () => {
@@ -9,10 +10,12 @@ export const ProductList = () => {
                 <ul>
                     {products.map(product => (
                     <li key={product.id}>
-                        {product.name} - {product.price} - {product.description}
+                        <Link to={`/detail/${product.id}`}>{product.name}</Link>
                     </li>
                     ))}
                 </ul>
+
+                
         </div>
     );
 };

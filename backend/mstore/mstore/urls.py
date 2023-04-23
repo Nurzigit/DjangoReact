@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api.views import ProductList, ProductDetail
+from api.views import ProductViewSet
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/', ProductList.as_view(), name='product-list'),
-    path('products/<int:pk>/', ProductDetail.as_view(), name='product-detail'),
+    path('api/products/', ProductViewSet.as_view({'get': 'list', 'post': 'create'})),
+    path('api/products/<int:pk>/', ProductViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})),
 ]
 

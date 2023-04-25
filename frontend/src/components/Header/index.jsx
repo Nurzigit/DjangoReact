@@ -1,43 +1,64 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import {LinkContainer} from 'react-router-bootstrap'
-export const Header = () => {
-    const navItems = ['Home', 'Products', 'Add', 'About'];
+import React, { Fragment, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '.././Auth/actions/auth';
+
+const Header = ({ logout, isAuthenticated }) => {
+    const [redirect, setRedirect] = useState(false);
+
+    const logout_user = () => {
+        logout();
+        setRedirect(true);
+    };
+
+    const guestLinks = () => (
+        <Fragment>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/login'>Login</Link>
+            </li>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/signup'>Sign Up</Link>
+            </li>
+        </Fragment>
+    );
+
+    const authLinks = () => (
+        <li className='nav-item'>
+            <a className='nav-link' href='#!' onClick={logout_user}>Logout</a>
+        </li>
+    );
+
     return (
-        <>
-            <Navbar bg="light" expand="lg">
-            <Container fluid>
-                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                <Nav
-                    className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }}
-                    navbarScroll
+        <Fragment>
+            <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+                <Link className='navbar-brand' to='/'>Auth System</Link>
+                <button 
+                    className='navbar-toggler' 
+                    type='button' 
+                    data-toggle='collapse' 
+                    data-target='#navbarNav' 
+                    aria-controls='navbarNav' 
+                    aria-expanded='false' 
+                    aria-label='Toggle navigation'
                 >
-                    {navItems.map((item) => (
-                            <LinkContainer key={item} to={`/${item}`}>
-                                <Nav.Link>{item}</Nav.Link>
-                            </LinkContainer>
-                        ))}
-                </Nav>
-                <Form className="d-flex">
-                    <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                    />
-                    <Button variant="outline-success">Search</Button>
-                </Form>
-                </Navbar.Collapse>
-            </Container>
-            </Navbar>
-        </>
+                    <span className='navbar-toggler-icon'></span>
+                </button>
+                <div className='collapse navbar-collapse' id='navbarNav'>
+                    <ul className='navbar-nav'>
+                        <li className='nav-item active'>
+                            <Link className='nav-link' to='/'>Home <span className='sr-only'>(current)</span></Link>
+                        </li>
+                        {isAuthenticated ? authLinks() : guestLinks()}
+                    </ul>
+                </div>
+            </nav>
+            {redirect ? <Navigate to='/' /> : <Fragment></Fragment>}
+        </Fragment>
     );
 };
 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { logout })(Header);

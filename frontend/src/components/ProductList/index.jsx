@@ -4,6 +4,10 @@ import { useLocalHook } from '../../hooks/useLocalHook';
 
 export const ProductList = () => {
     const { items: products } = useLocalHook();
+
+    if (products.length === 0) return <div>Loading...</div>;
+
+    
     return (
         <div>
             <h2>Product List</h2>

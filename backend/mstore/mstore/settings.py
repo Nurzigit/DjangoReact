@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'api.apps.ApiConfig',
+    'product.apps.ProductConfig',
     'corsheaders',
     'djoser',
     'accounts',
@@ -66,7 +66,7 @@ ROOT_URLCONF = 'mstore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,8 +127,8 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'nurzigitturman@gmail.com'
-EMAIL_HOST_PASSWORD = 'nurik123'
+EMAIL_HOST_USER = 'rootedu2023@gmail.com'
+EMAIL_HOST_PASSWORD = 'opjhimqibfmeubqj'
 EMAIL_USE_TLS = True
 
 # Password validation
@@ -175,13 +175,15 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images/')
-MEDIA_URL = '/image/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/images/')
+MEDIA_URL = '/images/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    MEDIA_ROOT,
-]
+STATIC_ROOT = "static/"
+
+
+# for craete new user 
+AUTH_USER_MODEL = 'accounts.UserAccount'
+
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
@@ -232,4 +234,3 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'email, first_name, last_name'
 }
 
-AUTH_USER_MODEL = 'accounts.UserAccount'

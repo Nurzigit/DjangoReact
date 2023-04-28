@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Home = () => (
+
+const Home = () => {
+
+    return(
     <div className='container'>
         <div className='jumbotron mt-5'>
             <h1 className='display-4'>Welcome to Auth System!</h1>
@@ -10,7 +13,13 @@ const Home = () => (
             <p>Click the Log In button</p>
             <Link className='btn btn-primary btn-lg' to='/login' role='button'>Login</Link>
         </div>
+
+        <div className="mt-5">
+        
+            
+        </div>
     </div>
-);
+    );
+    };
 
 export default Home;

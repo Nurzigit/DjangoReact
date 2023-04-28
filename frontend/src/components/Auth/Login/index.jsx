@@ -43,7 +43,6 @@ const Login = ({ login, isAuthenticated }) => {
     if (isAuthenticated) {
         return <Navigate to='/' />
     }
-
     return (
         <div className='container mt-5'>
             <h1>Sign In</h1>

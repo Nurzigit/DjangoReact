@@ -48,7 +48,15 @@ const Header = ({ logout, isAuthenticated }) => {
                         <li className='nav-item active'>
                             <Link className='nav-link' to='/'>Home <span className='sr-only'>(current)</span></Link>
                         </li>
+                        {isAuthenticated ? 
+                        <li className='nav-item active'>
+                            <Link className='nav-link' to='/products'>Products</Link>
+                        </li>
+                        : 
+                        <h1></h1>
+                        }
                         {isAuthenticated ? authLinks() : guestLinks()}
+                    
                     </ul>
                 </div>
             </nav>

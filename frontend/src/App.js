@@ -9,11 +9,11 @@ import Google from './components/Auth/Google';
 import ResetPassword from './components/Auth/ResetPassword';
 import ResetPasswordConfirm from './components/Auth/ResetPasswordConfirm';
 import Activate from './components/Auth/Activate';
-
 import { Provider } from 'react-redux';
 import store from './store';
 
 import Layout from './components/Layout';
+import { ProductForm } from './components/ProductForm';
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
             <Route exact path='/reset-password' element={<ResetPassword />} />
             <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
             <Route exact path='/activate/:uid/:token' element={<Activate />} />
-            
+            <Route exact path='/products' element={<ProductForm />} />
           </Routes>
         </Layout>
       </Router>
